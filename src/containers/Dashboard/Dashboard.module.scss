@@ -1,0 +1,19 @@
+.wrapper {
+  width: 100%;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.code-item {
+  font-size: 20px;
+  min-width: 40%;
+  display: flex;
+  // color: #ddd;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid rgba($color: #000, $alpha:1);
+}

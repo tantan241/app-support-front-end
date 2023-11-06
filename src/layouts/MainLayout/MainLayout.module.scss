@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  // width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+}
+.nav {
+  flex: 2;
+}
+.content {
+  flex: 8;
+  background-color: rgb(245, 241, 235);
+  // background-image: url("../../images/main_layout_background.jpg") ;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
+}
