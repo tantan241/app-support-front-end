@@ -91,6 +91,9 @@ function List(props) {
     });
   }, []);
   useEffect(() => {
+    setPage(0)
+  },[filter])
+  useEffect(() => {
     const body = {
       limit: rowsPerPage,
       page: page,
@@ -163,7 +166,6 @@ function List(props) {
         }
         setRows(rowsList);
         setTotalRows(res.data.total_rows)
-        setPage(0)
       }
     });
   }, [url, mapFunction, model, reload, page, rowsPerPage, filter]);
