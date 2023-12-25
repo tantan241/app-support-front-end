@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   Container,
+  Fab,
   Grid,
   MenuItem,
   Paper,
@@ -19,8 +20,11 @@ import List from "../../components/List";
 import { CODE_UPDATE } from "../../api/rootApi";
 import { useCallback, useEffect, useState } from "react";
 import { GET_CATEGORY } from "../../api/categoriesApi";
-import { fetchData } from "../../common";
 import { GET_LIST_USER } from "../../api/userApi";
+import { fetchData, showSnackbar } from "../../common";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { enqueueSnackbar } from "notistack";
+
 const cx = classNames.bind(styles);
 
 function CodeUpdate() {
@@ -34,6 +38,7 @@ function CodeUpdate() {
     type: "",
     user:"all"
   });
+
   const [valueTextField, setValuesTextField] = useState({ cartType: [], methods: [], entityType: [] ,listUser: []});
   useEffect(() => {
     const cartType = fetchData(`${GET_CATEGORY}?id=1`);
@@ -65,6 +70,23 @@ function CodeUpdate() {
       }));
     },
     [valueTextField.cartType]
+  );
+  const handleClickCopy = useCallback(
+    (data) => {
+      if (navigator.clipboard) {
+        navigator.clipboard
+          .writeText(data)
+          .then(function () {
+            showSnackbar("success", "Copy thành công", enqueueSnackbar);
+          })
+          .catch(function (err) {
+            console.error("Lỗi khi sao chép dữ liệu vào clipboard:", err);
+          });
+      } else {
+        console.warn("Trình duyệt không hỗ trợ Clipboard API");
+      }
+    },
+    []
   );
   return (
     <div className={cx("wrapper")}>
@@ -159,6 +181,13 @@ function CodeUpdate() {
         rowsPerPageOptions={[10, 50, 100]}
         filter={values}
         mapFunction={mapFunction}
+        addAction={(data) => (
+          <div style={{ margin: "0 8px" }}>
+            <Fab size="small" title="Copy" onClick={() => handleClickCopy(data.code)}>
+              <ContentCopyIcon color="primary"></ContentCopyIcon>
+            </Fab>
+          </div>
+        )}
       ></List>
     </div>
   );

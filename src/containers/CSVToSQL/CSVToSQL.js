@@ -119,10 +119,13 @@ function CSVToSQL() {
           <Grid item xs={12} className={cx("csv2sql-local-item")}>
             <Grid container spacing={4} className={cx("item-content")}>
               <Grid item xs={3}>
-                <TextField disabled fullWidth InputLabelProps={{ shrink: true }} value={item}></TextField>
+                <TextField disabled fullWidth InputLabelProps={{ shrink: true }} value={item.path}></TextField>
               </Grid>
-              <Grid item xs={3}>
-                <Button variant="outlined" onClick={() => handleConvertSQLLocal(item, index)}>
+              <Grid item xs={1}>
+                <div style={{textAlign: "center"}}> {item.size} KB</div>
+              </Grid>
+              <Grid item xs={2}>
+                <Button variant="outlined" onClick={() => handleConvertSQLLocal(item.path, index)}>
                   Convert
                 </Button>
               </Grid>

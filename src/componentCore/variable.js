@@ -45,7 +45,7 @@ export const navigation = [
     name: "Email Template",
     icon: EmailIcon,
     margin: 0,
-    link: "/email-template",
+    // link: "/email-template",
     child: [
       {
         id: 8,
@@ -54,6 +54,15 @@ export const navigation = [
         icon: InfoIcon,
         margin: 4,
         link: "/get-info-cart",
+        
+      },
+      {
+        id: 9,
+        role: "listArticle",
+        name: "Danh sách Article",
+        icon: InfoIcon,
+        margin: 4,
+        link: "/list-article",
         
       },
       // {

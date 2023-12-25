@@ -56,6 +56,7 @@ function List(props) {
   const navigate = useNavigate();
   const [rowsPerPage, setRowsPerPage] = useState(rowsPerPageOptions[0]);
   const [columns, setColumns] = useState([]);
+  const [totalRows, setTotalRows] = useState(0);
   const [rows, setRows] = useState([]);
   const [page, setPage] = useState(0);
   const [reload, setReload] = useState(0);
@@ -161,6 +162,8 @@ function List(props) {
           rowsList = mapFunction(rowsList);
         }
         setRows(rowsList);
+        setTotalRows(res.data.total_rows)
+        setPage(0)
       }
     });
   }, [url, mapFunction, model, reload, page, rowsPerPage, filter]);
@@ -225,7 +228,7 @@ function List(props) {
         components={{
           Footer: () => (
             <CustomFooter
-              count={10}
+              count={totalRows ? totalRows : 0}
               rowsPerPage={rowsPerPage}
               page={page}
               handleChangeRowsPerPage={(e) => {
