@@ -5,7 +5,7 @@ import styles from "./CodeUpdateEdit.module.scss";
 import { javascript } from "@codemirror/lang-javascript";
 import { python } from "@codemirror/lang-python";
 
-import CodeMirror from "@uiw/react-codemirror";
+// import CodeMirror from "@uiw/react-codemirror";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ComboBox from "../../componentCore/ComboBox/ComboBox";
 import { fetchData, handleClickCopy, showSnackbar } from "../../common";
@@ -14,6 +14,7 @@ import { GET_CATEGORY } from "../../api/categoriesApi";
 import { useNavigate } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import ReactCodeMirror from "@uiw/react-codemirror";
 
 const cx = classNames.bind(styles);
 function CodeUpdateEdit(props) {
@@ -109,7 +110,7 @@ function CodeUpdateEdit(props) {
         <Grid item xs={12}>
           <Typography variant="h6">CODE</Typography>
           <div style={{ position: "relative", width: "100%", border: "1px solid #000", paddingTop: "20px" }}>
-            <CodeMirror
+            <ReactCodeMirror
               value={values.code}
               height="400px"
               maxWidth="180vh"
