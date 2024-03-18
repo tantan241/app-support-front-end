@@ -119,17 +119,9 @@ function CodeUpdateEdit(props) {
 							onChange={(e) => setValues((prev) => ({ ...prev, code: e }))}
 							name="UNIQUE_ID_OF_DIV"
 							editorProps={{ $blockScrolling: true }}
-              height="400px"
-              maxWidth="180vh"
+							height="400px"
+							width="100%"
 						/>
-						,
-						{/* <ReactCodeMirror
-              value={values.code}
-              height="400px"
-              maxWidth="180vh"
-              extensions={[python()]}
-              onChange={(e) => setValues((prev) => ({ ...prev, code: e }))}
-            /> */}
 						<div className={cx("button-copy")}>
 							<Button size="small" variant="contained" onClick={() => handleClickCopy(values.code)}>
 								Code <ContentCopyIcon></ContentCopyIcon>
